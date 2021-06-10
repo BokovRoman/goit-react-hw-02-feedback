@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Notification.module.css';
 
-const Notification = ({ message }) => {
+
+const Notification = ({ stat, message }) => {
     return (
-        <p>{message}</p>
+        <>
+            <h2 className={styles.title}>{stat}</h2>
+            <p className={styles.text}>{message}</p>
+        </>
     );
 };
 

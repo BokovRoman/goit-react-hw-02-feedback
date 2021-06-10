@@ -66,16 +66,17 @@ class App extends Component{
                     onLeaveGoodFeedback={ this.handleGoodIncrement}
                     onLeaveNeutralFeedback={this.handleNeutralIncrement }
                     onLeaveBadFeedback={this.handleBadIncrement}
-                  />
+                />
               </Section>
                 </section>
                 <section>
-              <h2>Statistics</h2>
               {this.countTotalFeedback() === 0 ? (
                 <Notification
+                  stat="Statistics"
                   message="No feedback given"
                 />) : (
-                <Statistics
+                  <Statistics
+                  stat="Statistics"
                   good={this.state.good}
                   neutral={this.state.neutral}
                   bad={this.state.bad}
