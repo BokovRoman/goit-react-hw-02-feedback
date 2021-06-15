@@ -25,24 +25,13 @@ class App extends Component{
             bad: 0,
         }
 
-    handleGoodIncrement = () => {
+    handleLeaveFeedback = (e) => {
         this.setState((prevState) => ({
-                good:prevState.good+1,
-
+          [e.target.name]: prevState.[e.target.name] + 1
         }));
     };
 
-    handleNeutralIncrement = () => {
-        this.setState(prevState => ({
-            neutral:prevState.neutral+1,
-        }));
-    };
-
-    handleBadIncrement = () => {
-        this.setState(prevState => ({
-            bad: prevState.bad+1,
-        }));
-    };
+  
 
  	countTotalFeedback = () => {
 		const { good, neutral, bad } = this.state;
@@ -56,16 +45,17 @@ class App extends Component{
         return Math.round(percentage);
     };
 
-    render() {
+  render() {
+      const feedbacks = Object.keys(this.state);
+
         return (
             <div className="Statistics">
                 <section>
               <Section
                 title="Please leave feedback">
-                  <FeedbackOptions
-                    onLeaveGoodFeedback={ this.handleGoodIncrement}
-                    onLeaveNeutralFeedback={this.handleNeutralIncrement }
-                    onLeaveBadFeedback={this.handleBadIncrement}
+                <FeedbackOptions
+                    options={feedbacks}
+                    onLeaveFeedback={ this.handleLeaveFeedback}
                 />
               </Section>
                 </section>

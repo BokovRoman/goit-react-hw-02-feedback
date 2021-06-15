@@ -1,25 +1,24 @@
 import React from 'react';
+import shortid from "shortid";
 import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
 
 
-const FeedbackOptions= ({ onLeaveGoodFeedback, onLeaveNeutralFeedback, onLeaveBadFeedback }) => {
+const FeedbackOptions= ({options, onLeaveFeedback }) => {
     return (
         <>
-          <button className={styles.button} name="Good" type="button"
-                        onClick={onLeaveGoodFeedback}>Good</button>
-                    <button className={styles.button} name="Neutral" type="button"
-                        onClick={onLeaveNeutralFeedback}>Neutral</button>
-                    <button className={styles.button} name="Bad" type="button"
-                    onClick={onLeaveBadFeedback}>Bad</button>
+            {options.map((option)=>(
+                <button className={styles.button} name={option} type="button"
+                key={shortid.generate()}
+                    onClick={onLeaveFeedback}>{option}
+                </button>
+            ))}
         </>
     );
 };
 
 FeedbackOptions.propTypes = {
-    onLeaveGoodFeedback: PropTypes.func.isRequired,
-    onLeaveNeutralFeedback: PropTypes.func.isRequired,
-    onLeaveBadFeedback: PropTypes.func.isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
 }
              
 export default FeedbackOptions;
